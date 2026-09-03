@@ -66,14 +66,26 @@ colorscheme rather than reconstructing it from `colors.toml`.
 extension (`kvrohit.mellow-theme`), so VS Code / VSCodium / Cursor use the real
 theme instead of Omarchy's generated `vscode-theme.json`.
 
+## Ghostty
+
+`ghostty.conf` ships a hand-tuned 16-colour palette (mellow's terminal colours)
+instead of the ANSI set Omarchy derives from `colors.toml`. Omarchy already loads
+`config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"`, so the file
+is picked up on theme apply and `ghostty` reloads via `SIGUSR2`.
+
+Alacritty / Kitty / Foot still get the `colors.toml`-generated palette, so their
+ANSI colours differ slightly from Ghostty's. Port the same values into
+`colors.toml` if you want every terminal identical.
+
 ## Repo-install caveat
 
-Omarchy strips `*.lua`, `vscode.json`, and terminal configs from any theme whose
-directory contains a `.git` (i.e. `omarchy theme install <url>` or a plain
-`git clone` into the themes dir). `neovim.lua` and `vscode.json` only survive
+Omarchy strips `*.lua`, `vscode.json`, and terminal configs (`ghostty.conf`,
+`alacritty.toml`, `foot.ini`, `kitty.conf`) from any theme whose directory
+contains a `.git` (i.e. `omarchy theme install <url>` or a plain `git clone` into
+the themes dir). `neovim.lua`, `vscode.json`, and `ghostty.conf` only survive
 when `~/.config/omarchy/themes/maxx-mellow` is a **symlink** to this working copy
 (the local-development line under *Manual installation*), or a directory you
-assembled by hand with no `.git`. Otherwise both editors fall back to Omarchy's
+assembled by hand with no `.git`. Otherwise everything falls back to Omarchy's
 generated palettes (Neovim on `aether.nvim`).
 
 ## Author
