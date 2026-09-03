@@ -6,17 +6,23 @@ A dark Omarchy theme based on [mellow.nvim](https://github.com/mellow-theme/mell
 
 ## Wallpapers
 
-### Dusk
+Black Panther / Wakanda art, picked for the lavender-on-charcoal palette.
 
-![Maxx Mellow — Dusk](backgrounds/maxx-mellow-dusk.png)
+### Panther — Cosmic
 
-### Rose
+![Maxx Mellow — Panther Cosmic](backgrounds/maxx-mellow-panther-cosmic.jpg)
 
-![Maxx Mellow — Rose](backgrounds/maxx-mellow-rose.png)
+### Panther — Portal
 
-### Mist
+![Maxx Mellow — Panther Portal](backgrounds/maxx-mellow-panther-portal.jpg)
 
-![Maxx Mellow — Mist](backgrounds/maxx-mellow-mist.png)
+### Panther — Profile
+
+![Maxx Mellow — Panther Profile](backgrounds/maxx-mellow-panther-profile.jpg)
+
+### Wakanda — Emblem
+
+![Maxx Mellow — Wakanda Emblem](backgrounds/maxx-mellow-wakanda-emblem.png)
 
 ## Install
 
@@ -51,7 +57,28 @@ omarchy theme set maxx-mellow
 - Magenta: `#e29eca`
 - Peach red: `#f5a191`
 
-Colors follow mellow.nvim’s dark palette (MIT). Omarchy builds terminals, Hyprland, Neovim, and related apps from `colors.toml`.
+Colors follow mellow.nvim’s dark palette (MIT). Omarchy builds terminals, Hyprland, Waybar, and related apps from `colors.toml`.
+
+## Neovim
+
+`neovim.lua` loads the real [mellow.nvim](https://github.com/mellow-theme/mellow.nvim)
+colorscheme rather than reconstructing it from `colors.toml`.
+
+## VS Code
+
+`vscode.json` points Omarchy at the published [Mellow](https://marketplace.visualstudio.com/items?itemName=kvrohit.mellow-theme)
+extension (`kvrohit.mellow-theme`), so VS Code / VSCodium / Cursor use the real
+theme instead of Omarchy's generated `vscode-theme.json`.
+
+## Repo-install caveat
+
+Omarchy strips `*.lua`, `vscode.json`, and terminal configs from any theme whose
+directory contains a `.git` (i.e. `omarchy theme install <url>` or a plain
+`git clone` into the themes dir). `neovim.lua` and `vscode.json` only survive
+when `~/.config/omarchy/themes/maxx-mellow` is a **symlink** to this working copy
+(the local-development line under *Manual installation*), or a directory you
+assembled by hand with no `.git`. Otherwise both editors fall back to Omarchy's
+generated palettes (Neovim on `aether.nvim`).
 
 ## Author
 
