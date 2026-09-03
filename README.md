@@ -20,10 +20,6 @@ Black Panther / Wakanda art, picked for the lavender-on-charcoal palette.
 
 ![Maxx Mellow — Panther Profile](backgrounds/maxx-mellow-panther-profile.jpg)
 
-### Wakanda — Emblem
-
-![Maxx Mellow — Wakanda Emblem](backgrounds/maxx-mellow-wakanda-emblem.png)
-
 ## Install
 
 ```bash
