@@ -1,6 +1,6 @@
 # Maxx Mellow for Omarchy
 
-A dark Omarchy theme based on [mellow.nvim](https://github.com/mellow-theme/mellow.nvim): charcoal surfaces, dusty lavender, muted sage, peach, and rose (mellow’s cyan).
+A dark Omarchy theme based on [mellow.nvim](https://github.com/mellow-theme/mellow.nvim): charcoal surfaces, dusty lavender, muted sage, soft rose, and warm sand.
 
 ![Maxx Mellow desktop preview](preview.png)
 
@@ -48,12 +48,20 @@ omarchy theme set maxx-mellow
 - Background: `#161617`
 - Foreground: `#c9c7cd`
 - Accent lavender: `#aca1cf`
+- Red / rose: `#ea83a5`
 - Green: `#90b99f`
-- Rose (cyan): `#ea83a5`
-- Magenta: `#e29eca`
-- Peach red: `#f5a191`
+- Yellow: `#e6b99d`
+- Blue: `#92a2d5`
+- Magenta: `#aca1cf`
+- Cyan: `#85b5ba`
 
-Colors follow mellow.nvim’s dark palette (MIT). Omarchy builds terminals, Hyprland, Waybar, and related apps from `colors.toml`.
+`colors.toml` carries mellow's terminal ANSI palette (MIT), so Alacritty,
+Ghostty, Kitty and Foot all render identically. Omarchy also builds Hyprland,
+Waybar, btop and the rest from the same file.
+
+Two limits are baked into Omarchy's terminal templates and can't be set from
+`colors.toml`: ANSI 0 (black) is always the window `background` (`#161617`) and
+ANSI 8 (bright black) is always `muted` (`#757581`).
 
 ## Neovim
 
@@ -66,27 +74,20 @@ colorscheme rather than reconstructing it from `colors.toml`.
 extension (`kvrohit.mellow-theme`), so VS Code / VSCodium / Cursor use the real
 theme instead of Omarchy's generated `vscode-theme.json`.
 
-## Ghostty
+## Terminals
 
-`ghostty.conf` ships a hand-tuned 16-colour palette (mellow's terminal colours)
-instead of the ANSI set Omarchy derives from `colors.toml`. Omarchy already loads
-`config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"`, so the file
-is picked up on theme apply and `ghostty` reloads via `SIGUSR2`.
-
-Alacritty / Kitty / Foot still get the `colors.toml`-generated palette, so their
-ANSI colours differ slightly from Ghostty's. Port the same values into
-`colors.toml` if you want every terminal identical.
+Alacritty, Ghostty, Kitty and Foot are all generated from `colors.toml` — no
+per-terminal config is shipped, so they stay in lock-step.
 
 ## Repo-install caveat
 
-Omarchy strips `*.lua`, `vscode.json`, and terminal configs (`ghostty.conf`,
-`alacritty.toml`, `foot.ini`, `kitty.conf`) from any theme whose directory
-contains a `.git` (i.e. `omarchy theme install <url>` or a plain `git clone` into
-the themes dir). `neovim.lua`, `vscode.json`, and `ghostty.conf` only survive
-when `~/.config/omarchy/themes/maxx-mellow` is a **symlink** to this working copy
-(the local-development line under *Manual installation*), or a directory you
-assembled by hand with no `.git`. Otherwise everything falls back to Omarchy's
-generated palettes (Neovim on `aether.nvim`).
+Omarchy strips `*.lua` and `vscode.json` from any theme whose directory contains
+a `.git` (i.e. `omarchy theme install <url>` or a plain `git clone` into the
+themes dir). `neovim.lua` and `vscode.json` only survive when
+`~/.config/omarchy/themes/maxx-mellow` is a **symlink** to this working copy (the
+local-development line under *Manual installation*), or a directory you assembled
+by hand with no `.git`. Otherwise both editors fall back to Omarchy's generated
+palettes (Neovim on `aether.nvim`). The `colors.toml` palette always applies.
 
 ## Author
 
